@@ -1,7 +1,7 @@
 #This python script will add a number at the begining of the file
 #name. It will allow you to choose the number to start with and
 #counts up on its own from there. It numbers the files in order
-#based on the date which they were created. It should also not 
+#based on the date which they were last modified. It should also not 
 #mess with files which already have a number at the beginning.
 #This should make it possible to run this over and over again
 #in the same directory to add numbers to files as needed
@@ -33,8 +33,8 @@ if go == "yes":
 	#initialize array to combine time with name
 	array = []
 	for item in files:
-		#get the creation times and combine them with the name and save them as array 
-		array.append(str(os.stat(item).st_ctime) + "_+" + item)	
+		#get the modified times and combine them with the name and save them as array 
+		array.append(str(os.stat(item).st_mtime) + "_+" + item)	
 	#sort the array by file creation date
 	array.sort()
 	#remove the date from the array now that its sorted
