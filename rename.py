@@ -12,24 +12,33 @@
 import os, sys
 
 #Tell the user what the current directory is
-print("This script should be run from within the directory of the files which you want to rename reside. Make sure that the only files in the directory are the ones which you want to rename, it will rename all of them.")
+print("This script should be run from within the directory of the files which you want to rename reside. Make sure that the only files in the directory are the ones which you want to rename, it will rename all of them INCLUDING DIRECTORIES WITHIN THIS FOLDER.")
+print(" ")
 print("The current directory is: " + os.getcwd())
+print(" ")
 
 
 #Determine if the current directory is the correct one
 go = 0
 while go == 0:
 	go = str(input("Is this the right directory? (yes/no): "))
+
 #If it is the right one then rename the files with numbers
 if go.lower() == "yes" or go.lower() == "y":
+	#Determine if the user wants to be verbose
+	verbose = 0
+	while verbose == 0:
+		verbose = str(input("Would you like to be verbose? (yes/no): "))
+	#Get the file list from the directory
 	files_raw = os.listdir(os.getcwd())
 	#Rebuild files array without files that already have numbers
-	files =[]
+	files = []
 	for item in files_raw:
 		if not item[0].isdigit():
 			files.append(item)
 	#Get the number to start with
 	inc = int(input("Which number would you like to start with?: "))
+	print(" ")
 	#initialize array to combine time with name
 	array = []
 	for item in files:
@@ -45,9 +54,12 @@ if go.lower() == "yes" or go.lower() == "y":
 	i = 0
 	for item in final_array:
 		os.rename(item, str(inc) + item)
+		if verbose.lower() == "yes" or verbose.lower() == "y":
+			print(item + " was renamed to ==> " + (str(inc) + item))
 		i += 1 
 		inc += 1
 	#report that everything went well
+	print(" ")
 	print("Yay! Your files have been numbered.")
 	
 #If it isn't the right directory then quit
