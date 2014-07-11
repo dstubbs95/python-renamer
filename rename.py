@@ -43,8 +43,8 @@ if go == "yes":
 		final_array.append(item.partition("_+")[2])
 	#rename the files using the incriments given above
 	i = 0
-	for item in files:
-		os.rename(item, str(inc) + final_array[i])
+	for item in final_array:
+		os.rename(item, str(inc) + item)
 		i += 1 
 		inc += 1
 	#report that everything went well
