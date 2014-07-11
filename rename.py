@@ -21,7 +21,7 @@ go = 0
 while go == 0:
 	go = str(input("Is this the right directory? (yes/no): "))
 #If it is the right one then rename the files with numbers
-if go == "yes":
+if go.lower() == "yes" or go.lower() == "y":
 	files_raw = os.listdir(os.getcwd())
 	#Rebuild files array without files that already have numbers
 	files =[]
@@ -51,7 +51,7 @@ if go == "yes":
 	print("Yay! Your files have been numbered.")
 	
 #If it isn't the right directory then quit
-elif go == "no":
+elif go.lower() == "no" or go.lower() == "n":
 	print("Ok, then get to the right directory")
 #If for some reason we don't know what the hell is going on then quit before files get broken
 else: 
