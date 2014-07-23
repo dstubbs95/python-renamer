@@ -53,7 +53,7 @@ if go.lower() == "yes" or go.lower() == "y":
 	#rename the files using the incriments given above
 	i = 0
 	for item in final_array:
-		os.rename(item, str(inc) + item)
+		os.rename(item, str(inc) + "_" + item)
 		if verbose.lower() == "yes" or verbose.lower() == "y":
 			print(item + " was renamed to ==> " + (str(inc) + item))
 		i += 1 
